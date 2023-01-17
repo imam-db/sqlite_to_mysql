@@ -1,6 +1,15 @@
 ### Convert SQLite Tables to MySQL
 
-This script converts all the tables from a SQLite database to a MySQL database. The script takes the following command-line arguments:
+This script converts all the tables from a SQLite database to a MySQL database. 
+
+To run this project, you will need to have Python and pip installed on your system.
+Once you have these prerequisites, you can install the dependencies by running the following command in the root directory of the project:
+
+```pip install -r requirements.txt```
+
+This will install all the packages listed in your requirements.txt file. Once the dependencies are installed, you should be able to run your code successfully.
+
+The script takes the following command-line arguments:
 
     --sqlite-db: the path to the SQLite database file
     --mysql-user: the MySQL username
