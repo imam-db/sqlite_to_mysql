@@ -42,6 +42,9 @@ print("Successfully connected to MySQL database.")
 
 # Iterate through the tables in the SQLite database
 for table_name in table_names:
+    # Drop database if it already exists
+    mysql_engine.execute(f'DROP DATABASE IF EXISTS {args.mysql_database}')
+
     # Drop the table if it already exists in the MySQL database
     mysql_engine.execute(f'DROP TABLE IF EXISTS {table_name}')
 
