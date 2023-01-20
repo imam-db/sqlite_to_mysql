@@ -11,6 +11,7 @@ parser.add_argument('--mysql-user', required=True, help='MySQL username')
 parser.add_argument('--mysql-password', required=True, help='MySQL password')
 parser.add_argument('--mysql-host', required=True, help='MySQL host')
 parser.add_argument('--mysql-database', required=True, help='MySQL database name')
+parser.add_argument('--mysql-port', required=False, default='3306', help='MySQL port')
 args = parser.parse_args()
 
 # check if sqlite file exists
@@ -29,7 +30,7 @@ table_names = inspector.get_table_names()
 
 # Connect to the MySQL database using a SQLAlchemy engine
 try:
-    mysql_engine = sa.create_engine(f'mysql+mysqlconnector://{args.mysql_user}:{args.mysql_password}@{args.mysql_host}/{args.mysql_database}')
+    mysql_engine = sa.create_engine(f'mysql+mysqlconnector://{args.mysql_user}:{args.mysql_password}@{args.mysql_host}:{args.mysql_port}/{args.mysql_database}')
 except sa.exc.OperationalError as e:
     if "Access denied for user" in str(e):
         print("Error: Invalid MySQL username or password.")
